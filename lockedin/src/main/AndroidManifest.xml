@@ -20,6 +20,14 @@
             android:name="io.andr.lockedin.lockedin.VoteActivity"
             android:label="@string/title_activity_vote" >
         </activity>
+        <activity
+            android:name="io.andr.lockedin.lockedin.ImageActivity"
+            android:label="@string/title_activity_image" >
+        </activity>
+        <activity
+            android:name="io.andr.lockedin.lockedin.VideoActivity"
+            android:label="@string/title_activity_video" >
+        </activity>
     </application>
 
     <uses-permission android:name="android.permission.INTERNET" />

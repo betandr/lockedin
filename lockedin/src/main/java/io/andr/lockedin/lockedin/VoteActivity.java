@@ -1,6 +1,7 @@
 package io.andr.lockedin.lockedin;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
@@ -64,21 +65,34 @@ public class VoteActivity extends Activity {
 
             button1.setOnClickListener(new View.OnClickListener() {
                 public void onClick(View v) {
-                    Toast.makeText(getApplicationContext(), "Thanks for your vote!", Toast.LENGTH_LONG).show();
+
+                    Toast.makeText(getApplicationContext(), "Thanks for your vote for " +
+                            button1.getText().toString() + "!",
+                            Toast.LENGTH_LONG).show();
+
                     button1.setEnabled(false);
                     button1.setBackgroundResource(R.drawable.disabled_vote_button);
                     button2.setEnabled(false);
                     button2.setBackgroundResource(R.drawable.disabled_vote_button);
+
+                    Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                    startActivity(intent);
                 }
             });
 
             button2.setOnClickListener(new View.OnClickListener() {
                 public void onClick(View v) {
-                    Toast.makeText(getApplicationContext(), "Thanks for your vote!", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(), "Thanks for your vote for " +
+                            button2.getText().toString() + "!",
+                            Toast.LENGTH_LONG).show();
+
                     button1.setEnabled(false);
                     button1.setBackgroundResource(R.drawable.disabled_vote_button);
                     button2.setEnabled(false);
                     button2.setBackgroundResource(R.drawable.disabled_vote_button);
+
+                    Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                    startActivity(intent);
                 }
             });
 

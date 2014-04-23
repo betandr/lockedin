@@ -45,12 +45,34 @@ public class MainActivity extends Activity {
         Log.i("DEBUG", "Subscribing to 'locked_in_channel'");
         Channel channel = pusher.subscribe("locked_in_channel");
 
-        Log.i("DEBUG", "Binding to 'event'");
+        Log.i("DEBUG", "Binding to 'vote' event");
         channel.bind("vote", new SubscriptionEventListener() {
             @Override
             public void onEvent(String channel, String event, String data) {
                 Log.i("DEBUG", "Received event with data: " + data);
                 Intent intent = new Intent(getApplicationContext(), VoteActivity.class);
+                intent.putExtra("json", data);
+                startActivity(intent);
+            }
+        });
+
+        Log.i("DEBUG", "Binding to 'image' event");
+        channel.bind("image", new SubscriptionEventListener() {
+            @Override
+            public void onEvent(String channel, String event, String data) {
+                Log.i("DEBUG", "Received event with data: " + data);
+                Intent intent = new Intent(getApplicationContext(), ImageActivity.class);
+                intent.putExtra("json", data);
+                startActivity(intent);
+            }
+        });
+
+        Log.i("DEBUG", "Binding to 'video' event");
+        channel.bind("video", new SubscriptionEventListener() {
+            @Override
+            public void onEvent(String channel, String event, String data) {
+                Log.i("DEBUG", "Received event with data: " + data);
+                Intent intent = new Intent(getApplicationContext(), VideoActivity.class);
                 intent.putExtra("json", data);
                 startActivity(intent);
             }
