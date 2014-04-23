@@ -12,12 +12,12 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 
-public class VideoActivity extends Activity {
+public class SoundcloudTrackActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_video);
+        setContentView(R.layout.activity_soundcloud_track);
 
         Bundle extras = getIntent().getExtras();
         String json = "";
@@ -28,10 +28,9 @@ public class VideoActivity extends Activity {
 
         try {
             JSONObject vote = new JSONObject(json);
-            String videoUrl = vote.getString("url");
+            String soundcloudId = vote.getString("soundcloud_id");
 
-            Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(videoUrl));
-            intent.putExtra("force_fullscreen", true);
+            Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("soundcloud://tracks:" + soundcloudId));
             startActivity(intent);
 
         } catch (JSONException je) {
@@ -39,11 +38,12 @@ public class VideoActivity extends Activity {
         }
     }
 
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.video, menu);
+        getMenuInflater().inflate(R.menu.soundcloud_track, menu);
         return true;
     }
 

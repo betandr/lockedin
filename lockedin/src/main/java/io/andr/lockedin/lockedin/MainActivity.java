@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.WindowManager;
 
 import com.pusher.client.Pusher;
 import com.pusher.client.channel.Channel;
@@ -23,6 +24,8 @@ public class MainActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
 
         connectToPusher();
     }
@@ -73,6 +76,17 @@ public class MainActivity extends Activity {
             public void onEvent(String channel, String event, String data) {
                 Log.i("DEBUG", "Received event with data: " + data);
                 Intent intent = new Intent(getApplicationContext(), VideoActivity.class);
+                intent.putExtra("json", data);
+                startActivity(intent);
+            }
+        });
+
+        Log.i("DEBUG", "Binding to 'soundcloud_track' event");
+        channel.bind("soundcloud_track", new SubscriptionEventListener() {
+            @Override
+            public void onEvent(String channel, String event, String data) {
+                Log.i("DEBUG", "Received event with data: " + data);
+                Intent intent = new Intent(getApplicationContext(), SoundcloudTrackActivity.class);
                 intent.putExtra("json", data);
                 startActivity(intent);
             }

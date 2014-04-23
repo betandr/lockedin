@@ -28,6 +28,10 @@
             android:name="io.andr.lockedin.lockedin.VideoActivity"
             android:label="@string/title_activity_video" >
         </activity>
+        <activity
+            android:name="io.andr.lockedin.lockedin.SoundcloudTrackActivity"
+            android:label="@string/title_activity_soundcloud_track" >
+        </activity>
     </application>
 
     <uses-permission android:name="android.permission.INTERNET" />

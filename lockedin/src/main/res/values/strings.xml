@@ -8,5 +8,7 @@
     <string name="title_activity_vote">Locked In</string>
     <string name="title_activity_image">Locked In</string>
     <string name="title_activity_video">Locked In</string>
+    <string name="title_activity_soundcloud_track">Locked In</string>
+    <string name="hello_world">Hello world!</string>
 
 </resources>
